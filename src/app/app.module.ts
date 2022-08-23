@@ -5,18 +5,22 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { EducacionComponent } from './educacion/educacion.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { EducacionComponent } from './components/educacion/educacion.component';
 
 import {ButtonModule} from 'primeng/button'
 import {CardModule} from 'primeng/card';
 import {MenubarModule} from 'primeng/menubar';
+import {InputTextModule}  from 'primeng/inputtext';
 import {MenuItem} from 'primeng/api';
+import {HttpClientModule} from "@angular/common/http"
+import { ExperienciaLaboralComponent } from './components/experiencia-laboral/experiencia-laboral.component';
+import { RegistrarEducacionComponent } from './components/registrar-modificar-educacion/registrar-modificar-educacion.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-laboral.component'
 
 @NgModule({
   declarations: [
@@ -27,6 +31,7 @@ import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-l
     HomeComponent,
     EducacionComponent,
     ExperienciaLaboralComponent,
+    RegistrarEducacionComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,12 @@ import { ExperienciaLaboralComponent } from './experiencia-laboral/experiencia-l
     BrowserAnimationsModule,
     ButtonModule,
     CardModule,
-    MenubarModule
+    MenubarModule,
+    HttpClientModule,
+    FormsModule,
+    InputTextModule,
+    ReactiveFormsModule
+  
     
   ],
   providers: [],

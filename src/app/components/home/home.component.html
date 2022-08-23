@@ -1,0 +1,36 @@
+<div class="card mb-3 mt-3">
+    <img src="/assets/portada.jpg" class="card-img-top" alt="portada" />
+    <div class="card-body">
+      <h5 class="card-title">Franco Ceschan</h5>
+      <p class="card-text">Developer Full Stak - Angular - Java</p>    
+    </div>
+  </div>
+  <div>
+    <h1 class="flex justify-content-between fs-3">
+      Educación       
+      <button *ngIf="isAuthenticated" class="agregar flex align-items-center justify-content-center p-button-rounded p-button-secondary p-button-outlined mr-2" pButton pRipple type="button" icon="pi pi-plus" (click)="registrarEducacion()"></button>
+    </h1>
+    <app-educacion 
+    *ngFor="let estudio of estudios ; index as i; first as isFirst"
+    id={{estudio.id}} 
+    institucion={{estudio.institucion}}
+    titulo={{estudio.titulo}}
+    anioInicio={{estudio.anioInicio}}
+    anioFin={{estudio.anioFin}}
+    >
+    </app-educacion>
+  </div>
+  <div class="mb-3">
+    <h1 class="fs-3 mt-3">Experiencia laboral</h1>
+    <app-experiencia-laboral
+    *ngFor="let experiencia of experiencias ; index as i; first as isFirst"
+    id={{experiencia.id}} 
+    institucion={{experiencia.institucion}}
+    titulo={{experiencia.titulo}}
+    anioInicio={{experiencia.anioInicio}}
+    anioFin={{experiencia.anioFin}}
+    ></app-experiencia-laboral>
+  </div>
+
+  
+ 

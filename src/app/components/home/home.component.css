@@ -1,0 +1,9 @@
+.card-img-top{
+    height: 200px;
+    
+}
+
+button{
+    max-width: 2rem;
+    max-height: 2rem;
+}

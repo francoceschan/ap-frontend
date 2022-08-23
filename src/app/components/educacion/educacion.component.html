@@ -1,0 +1,26 @@
+
+  <p-card header={{institucion}} class="m-2">
+    <p>{{titulo}}</p> 
+    <p>{{anioInicio}} - {{anioFin}}</p>  
+    
+    <div class="flex justify-content-end flex-wrap mt-3">
+      <button 
+      class="flex align-items-center justify-content-center p-button-rounded p-button-outlined mr-2" 
+      *ngIf="isAuthenticated"
+      (click)="modificarEstudio(id)" 
+      pButton 
+      pRipple 
+      type="button" 
+      icon="pi pi-pencil">
+      </button>
+
+      <button 
+      class="flex align-items-center justify-content-center p-button-rounded p-button-danger p-button-outlined mr-2" *ngIf="isAuthenticated"
+      (click)="eliminarEstudio(id)" 
+      pButton 
+      pRipple 
+      type="button" 
+      icon="pi pi-times" >
+      </button>
+    </div>
+  </p-card>

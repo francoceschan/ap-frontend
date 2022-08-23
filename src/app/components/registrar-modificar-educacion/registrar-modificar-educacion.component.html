@@ -1,0 +1,52 @@
+
+
+
+
+<p-card header="Registrar educación" class="ml-4">
+    <form (ngSubmit)="onSubmit()">
+
+    <span class="p-float-label m-4">
+        <input 
+        id="institucion" 
+        [(ngModel)]="educacion.institucion"
+        name="institucion"
+        type="text" 
+        pInputText> 
+
+        <label for="institucion">Institución</label>
+    </span>
+
+    <span class="p-float-label m-4">
+                <input 
+        id="titulo" 
+        [(ngModel)]="educacion.titulo"
+        name="titulo"
+        type="text" 
+        pInputText> 
+        <label for="titulo">Título</label>
+    </span>
+
+    <span class="p-float-label m-4">
+        <input 
+        id="anioInicio"
+        [(ngModel)]="educacion.anioInicio"
+        name="anioInicio" 
+        type="number" 
+        pInputText> 
+        <label for="anioInicio">Año de Inicio</label>
+    </span>
+    <span class="p-float-label m-4">
+        <input 
+        id="anioFin"
+        [(ngModel)]="educacion.anioFin"
+        name="anioFin" 
+        type="number" 
+        pInputText> 
+        <label for="anioFin">Año de Finalización</label>
+    </span>
+    <button pButton type="button" label="Guardar" class="ml-4" (click)="onSubmit()"></button>
+    <button pButton type="button" label="Volver" class="ml-4 p-button-secondary" (click)="onSubmit()"></button>
+</form>
+  </p-card>
+
+  
