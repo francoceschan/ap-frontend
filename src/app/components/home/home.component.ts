@@ -63,6 +63,10 @@ export class HomeComponent implements OnInit {
   registrarEducacion(){
     this.router.navigate(['registrar-educacion'])
   }
+ 
+  registrarExperiencia(){
+    this.router.navigate(['registrar-experiencia'])
+  }
 
 
 }

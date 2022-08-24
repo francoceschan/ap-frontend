@@ -20,6 +20,7 @@ import {HttpClientModule} from "@angular/common/http"
 import { ExperienciaLaboralComponent } from './components/experiencia-laboral/experiencia-laboral.component';
 import { RegistrarEducacionComponent } from './components/registrar-modificar-educacion/registrar-modificar-educacion.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegistrarModificarExperienciaComponent } from './components/registrar-modificar-experiencia/registrar-modificar-experiencia.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EducacionComponent,
     ExperienciaLaboralComponent,
     RegistrarEducacionComponent,
+    RegistrarModificarExperienciaComponent,
   ],
   imports: [
     BrowserModule,

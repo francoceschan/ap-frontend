@@ -5,14 +5,17 @@
     <div class="flex justify-content-end flex-wrap mt-3">
       <button 
       *ngIf="isAuthenticated" 
-      class="flex align-items-center justify-content-center p-button-rounded p-button-outlined mr-2"  
+      class="flex align-items-center justify-content-center p-button-rounded p-button-outlined mr-2"
+      (click)="modificarExperiencia(id)"   
       pButton pRipple 
       type="button" 
       icon="pi pi-pencil"></button>
       
       <button 
       *ngIf="isAuthenticated" 
-      class="flex align-items-center justify-content-center p-button-rounded p-button-danger p-button-outlined mr-2" pButton pRipple 
+      class="flex align-items-center justify-content-center p-button-rounded p-button-danger p-button-outlined mr-2" 
+      (click)="eliminarExperiencia(id)" 
+      pButton pRipple 
       type="button" 
       icon="pi pi-times" ></button>
     </div>

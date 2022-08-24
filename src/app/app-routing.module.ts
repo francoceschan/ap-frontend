@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrarEducacionComponent } from './components/registrar-modificar-educacion/registrar-modificar-educacion.component';
+import { RegistrarModificarExperienciaComponent } from './components/registrar-modificar-experiencia/registrar-modificar-experiencia.component';
 
 const routes: Routes = [
   {path:'', component:HomeComponent},
@@ -10,6 +11,8 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'registrar-educacion', component:RegistrarEducacionComponent},
   {path:'registrar-educacion/:id', component:RegistrarEducacionComponent},
+  {path:'registrar-experiencia', component:RegistrarModificarExperienciaComponent},
+  {path:'registrar-experiencia/:id', component:RegistrarModificarExperienciaComponent},
 ];
 
 @NgModule({

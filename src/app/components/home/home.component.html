@@ -7,9 +7,18 @@
   </div>
   <div>
     <h1 class="flex justify-content-between fs-3">
+
       Educación       
-      <button *ngIf="isAuthenticated" class="agregar flex align-items-center justify-content-center p-button-rounded p-button-secondary p-button-outlined mr-2" pButton pRipple type="button" icon="pi pi-plus" (click)="registrarEducacion()"></button>
+      <button 
+      *ngIf="isAuthenticated" 
+      class="agregar flex align-items-center justify-content-center p-button-rounded p-button-secondary p-button-outlined mr-2" 
+      pButton pRipple 
+      type="button" 
+      icon="pi pi-plus" 
+      (click)="registrarEducacion()"></button>
+
     </h1>
+
     <app-educacion 
     *ngFor="let estudio of estudios ; index as i; first as isFirst"
     id={{estudio.id}} 
@@ -19,9 +28,23 @@
     anioFin={{estudio.anioFin}}
     >
     </app-educacion>
+
   </div>
-  <div class="mb-3">
-    <h1 class="fs-3 mt-3">Experiencia laboral</h1>
+
+  <div class="mt-3">
+    <h1 class="flex justify-content-between fs-3">
+      Experiencia laboral
+
+      <button 
+      *ngIf="isAuthenticated" 
+      class="agregar flex align-items-center justify-content-center p-button-rounded p-button-secondary p-button-outlined mr-2" 
+      pButton pRipple 
+      type="button" 
+      icon="pi pi-plus" 
+      (click)="registrarExperiencia()"></button>
+
+    </h1>
+    
     <app-experiencia-laboral
     *ngFor="let experiencia of experiencias ; index as i; first as isFirst"
     id={{experiencia.id}} 
@@ -30,6 +53,7 @@
     anioInicio={{experiencia.anioInicio}}
     anioFin={{experiencia.anioFin}}
     ></app-experiencia-laboral>
+
   </div>
 
   

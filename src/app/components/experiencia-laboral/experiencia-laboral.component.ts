@@ -29,13 +29,14 @@ export class ExperienciaLaboralComponent implements OnInit {
 
   eliminarExperiencia(id:string){
     this.experienciaService.eliminarExperiencia(id).subscribe(dato => {
-      this.router.navigate(['/'])
+      console.log(dato);
     }, error => console.log(error));
 
+    this.router.navigate(['/'])
   }
 
   modificarExperiencia(id:string){
-    this.router.navigate([`/registrar-educacion/${id}`])
+    this.router.navigate([`/registrar-experiencia/${id}`])
   }
 
 }

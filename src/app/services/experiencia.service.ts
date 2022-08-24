@@ -34,7 +34,7 @@ export class ExperienciaService {
   }
 
   obtenerExperienciaPorId(id:string) : Observable<Experiencia>{
-    return this.httpClient.get<Experiencia>(`${this.baseURL}/${id}`)
+    return this.httpClient.get<Experiencia>(`${this.baseURL}/${id}`, { headers: this.reqHeaders })
   }
 
   modificarExperiencia(id:string, experiencia:Experiencia):Observable<Object>{

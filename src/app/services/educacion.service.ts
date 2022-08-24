@@ -35,7 +35,7 @@ export class EducacionService {
   }
 
   obtenerEstudioPorId(id:string) : Observable<Educacion>{
-    return this.httpClient.get<Educacion>(`${this.baseURL}/${id}`)
+    return this.httpClient.get<Educacion>(`${this.baseURL}/${id}`,{ headers: this.reqHeaders })
   }
 
   modificarEstudio(id:string, educacion:Educacion):Observable<Object>{
