@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/model/usuario';
 import { Response } from 'src/app/model/response';
 import { Subscription } from 'rxjs';
+import { Store } from '@ngxs/store';
+import { Login } from './state/login.state';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     formBuilder: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private store: Store
   ) {
     this.formLogin = formBuilder.group({
       usuario: ['',Validators.required],
@@ -45,6 +48,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     .subscribe(res => {
       console.log('token', res.body.token);
       sessionStorage.setItem('token',res.body.token);
+
+      this.store.dispatch(new Login(true))
+      
       this.router.navigate(['/home'])
     }, err => {console.log('Error en el login',err);})
 

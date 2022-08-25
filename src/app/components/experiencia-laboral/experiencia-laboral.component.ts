@@ -32,7 +32,7 @@ export class ExperienciaLaboralComponent implements OnInit {
       console.log(dato);
     }, error => console.log(error));
 
-    this.router.navigate(['/'])
+    
   }
 
   modificarExperiencia(id:string){
