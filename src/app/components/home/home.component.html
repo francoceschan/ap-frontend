@@ -21,7 +21,7 @@
     </h1>
 
     <app-educacion 
-    *ngFor="let estudio of estudios ; index as i; first as isFirst"
+    *ngFor="let estudio of estudios$ | async; index as i; first as isFirst"
     id={{estudio.id}} 
     institucion={{estudio.institucion}}
     titulo={{estudio.titulo}}
@@ -47,7 +47,7 @@
     </h1>
     
     <app-experiencia-laboral
-    *ngFor="let experiencia of experiencias ; index as i; first as isFirst"
+    *ngFor="let experiencia of experiencias$ | async ; index as i; first as isFirst"
     id={{experiencia.id}} 
     institucion={{experiencia.institucion}}
     titulo={{experiencia.titulo}}

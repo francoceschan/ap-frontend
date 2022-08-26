@@ -15,19 +15,13 @@ export class NavBarComponent implements OnInit {
 
   isAuthenticated : boolean;
 
-  constructor(
-    private authService:AuthenticationService,
-    private store:Store
-  ) {
-    // this.isAuthenticated$ = this.store.select(state => state.Login.isAuthenticated);
-    // console.log(this.isAuthenticated$)
-   }
+  constructor( ) {}
 
   ngOnInit(): void {
     this.isAuthenticated$.subscribe((isAuthenticatedState : boolean)=>{
-      console.log(isAuthenticatedState)
+      this.isAuthenticated=isAuthenticatedState
     })
-  //  this.isAuthenticated = this.authService.isLoggedIn();
+
   }
 
 }

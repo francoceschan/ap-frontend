@@ -1,10 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
+import { AuthenticationService } from "src/app/services/auth.service";
 
 export class Login {
     static readonly type = '[Login] Login';
 
-    constructor(public payload: boolean) {}
+    constructor(
+        public payload: boolean
+        ) {}
 }
 
 export interface LoginStateModel {
@@ -25,9 +28,8 @@ const defaultLoginStateModel : LoginStateModel = {isAuthenticated:false}
 export class LoginState{
 
     @Selector()
-    static getIsAuthenticated(ctx: StateContext<LoginStateModel>){
-        console.log(ctx.getState().isAuthenticated)
-        return ctx.getState().isAuthenticated
+    static getIsAuthenticated(state: LoginStateModel){
+        return state.isAuthenticated
     }
 
 

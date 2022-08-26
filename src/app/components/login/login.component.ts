@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (sessionStorage.getItem('token')!== null){
+      this.store.dispatch(new Login(false))
       sessionStorage.clear();
       this.router.navigate(['/home']);
     }
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     
    this.subRef$ = this.http.post<any>('http://localhost:8080/api/auth/login',usuarioLogin, {observe:'response'})
     .subscribe(res => {
-      console.log('token', res.body.token);
+      //console.log('token', res.body.token);
       sessionStorage.setItem('token',res.body.token);
 
       this.store.dispatch(new Login(true))

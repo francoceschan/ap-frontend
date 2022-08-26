@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/auth.service';
 import { ExperienciaService } from 'src/app/services/experiencia.service';
+import { LoginState } from '../login/state/login.state';
 
 @Component({
   selector: 'app-experiencia-laboral',
@@ -9,6 +12,8 @@ import { ExperienciaService } from 'src/app/services/experiencia.service';
   styleUrls: ['./experiencia-laboral.component.css']
 })
 export class ExperienciaLaboralComponent implements OnInit {
+
+  @Select(LoginState.getIsAuthenticated) isAuthenticated$ : Observable<boolean>;
 
   @Input() id:string;
   @Input() institucion:string;
@@ -24,7 +29,9 @@ export class ExperienciaLaboralComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.isAuthenticated = this.authService.isLoggedIn();
+    this.isAuthenticated$.subscribe((isAuthenticatedState : boolean)=>{
+      this.isAuthenticated=isAuthenticatedState
+    })
   }
 
   eliminarExperiencia(id:string){
