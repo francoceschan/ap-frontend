@@ -17,9 +17,9 @@ export class EducacionComponent implements OnInit {
   @Input() id:string;
   @Input() institucion:string;
   @Input() titulo:string;
-  @Input() anioInicio:string;
-  @Input() anioFin:string;
-  isAuthenticated : boolean = false;
+  @Input() fechaInicio:string;
+  @Input() fechaFin:string;
+  isAuthenticated : boolean;
 
   constructor(
     private educacionService:EducacionService,
@@ -30,13 +30,32 @@ export class EducacionComponent implements OnInit {
     this.isAuthenticated$.subscribe((isAuthenticatedState : boolean)=>{
       this.isAuthenticated=isAuthenticatedState
     })
+
+    let fecha:Date;
+    let mes: number;
+    let anio: string;
+
+    fecha=new Date(this.fechaInicio)
+    mes=fecha.getMonth()+1
+    anio=fecha.getFullYear().toString()
+
+    this.fechaInicio = mes.toString()+" / "+anio
+
+    fecha=new Date(this.fechaFin)
+    mes=fecha.getMonth()+1
+    anio=fecha.getFullYear().toString()
+    this.fechaFin = mes.toString()+" / "+anio
   }
 
   eliminarEstudio(id:string){
-    this.educacionService.eliminarEstudio(id).subscribe(dato => {
-      this.router.navigate(['/'])
-    }, error => console.log(error));
 
+    if(this.isAuthenticated){
+
+      this.educacionService.eliminarEstudio(id).subscribe(dato => { 
+      }, error => console.log(error)); 
+      
+    }
+    
   }
 
   modificarEstudio(id:string){

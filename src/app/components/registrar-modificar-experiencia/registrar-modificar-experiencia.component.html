@@ -27,22 +27,21 @@
     </span>
 
     <span class="p-float-label m-4">
-        <input 
-        id="anioInicio"
-        [(ngModel)]="experiencia.anioInicio"
-        name="anioInicio" 
-        type="number" 
-        pInputText> 
-        <label for="anioInicio">Año de Inicio</label>
+        <p-calendar 
+        id="fechaInicio"
+        [(ngModel)]="experiencia.fechaInicio"
+        name="fechaInicio"
+        ></p-calendar>
+        <label for="fechaInicio">Fecha de Inicio</label>
+        
     </span>
     <span class="p-float-label m-4">
-        <input 
-        id="anioFin"
-        [(ngModel)]="experiencia.anioFin"
-        name="anioFin" 
-        type="number" 
-        pInputText> 
-        <label for="anioFin">Año de Finalización</label>
+        <p-calendar 
+        id="fechaFin"
+        [(ngModel)]="experiencia.fechaFin"
+        name="fechaFin"
+        ></p-calendar> 
+        <label for="fechaFin">Fecha de Finalización</label>
     </span>
     <button pButton type="button" label="Guardar" class="ml-4" (click)="onSubmit()"></button>
     <button pButton type="button" label="Volver" class="ml-4 p-button-secondary" (click)="onSubmit()"></button>

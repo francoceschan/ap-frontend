@@ -25,6 +25,9 @@ export class RegistrarModificarExperienciaComponent implements OnInit {
       this.id = this.route.snapshot.params['id'];
       this.experienciaService.obtenerExperienciaPorId(this.id).subscribe(data => {
         this.experiencia=data;
+        this.experiencia.fechaInicio=new Date(this.experiencia.fechaInicio);
+        this.experiencia.fechaFin=new Date(this.experiencia.fechaFin);
+        
       })
     }
 

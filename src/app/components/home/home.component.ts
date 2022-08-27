@@ -14,10 +14,12 @@ import { AuthenticationService } from 'src/app/services/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public estudios$ : Observable<Educacion[]>
-  public experiencias$ : Observable<Experiencia[]>
- // estudios:Educacion[];
-  //experiencias:Experiencia[];
+
+  @Select(LoginState.getIsAuthenticated) isAuthenticated$ : Observable<boolean>;
+
+  public estudios$ : Observable<Educacion[]> = this.educacionService.obtenerListaDeEstudios();
+  public experiencias$ : Observable<Experiencia[]> =this.experienciaService.obtenerListaDeExperiencias();
+
   isAuthenticated : boolean;
 
 
@@ -26,40 +28,24 @@ export class HomeComponent implements OnInit {
     private experienciaService:ExperienciaService,
     private authService: AuthenticationService,
     private router: Router,
-    private store: Store
+    private store: Store 
     
     ) {
 
     }
 
   ngOnInit(): void {
-    this.estudios$=this.educacionService.obtenerListaDeEstudios();
-    this.experiencias$=this.experienciaService.obtenerListaDeExperiencias();
-  
-   // this.obtenerEstudios();
-  //  this.obtenerExperiencias();
-    //MUESTRA EL TOKEN
-    //console.log(sessionStorage.getItem('token'));
-    this.store.dispatch(new Login(this.authService.isLoggedIn()))
-    this.isAuthenticated = this.store.selectSnapshot(LoginState.getIsAuthenticated)
-    //this.estudios = this.store.selectSnapshot(EducacionState.getListaEducacion)
+ 
+    this.store.dispatch(new Login(this.authService.isLoggedIn()));
 
+    this.isAuthenticated$.subscribe((isAuthenticatedState : boolean)=>{
+      this.isAuthenticated=isAuthenticatedState
+    });
+
+    this.estudios$.subscribe();
+
+    this.experiencias$.subscribe();
   }
-
-  // obtenerEstudios(){
-  //   // this.educacionService.obtenerListaDeEstudios().subscribe(data => {
-  //   //   this.estudios=data;
-  //   //  // console.log(data);
-  //   // })    
-  // }
-
-  // obtenerExperiencias(){
-  //   this.experienciaService.obtenerListaDeExperiencias().subscribe(data => {
-  //     this.experiencias=data;
-      
-  //    // console.log(data);
-  //   })   
-  // }
 
   registrarEducacion(){
     this.router.navigate(['registrar-educacion'])

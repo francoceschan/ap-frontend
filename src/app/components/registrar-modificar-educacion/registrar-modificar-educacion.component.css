@@ -1,3 +1,7 @@
 input {
-    min-width: 50rem;
+    width: 50rem;
+}
+
+::ng-deep .p-calendar{
+    width: 50rem;
 }

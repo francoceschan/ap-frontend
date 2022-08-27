@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Educacion } from '../../model/educacion';
 import { EducacionService } from '../../services/educacion.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'app-registrar-educacion',
@@ -19,7 +18,7 @@ export class RegistrarEducacionComponent implements OnInit {
     private educacionService: EducacionService,
     private router :Router,
     private route : ActivatedRoute,
-    private store: Store,
+ 
    
     ) { }
 
@@ -29,6 +28,8 @@ export class RegistrarEducacionComponent implements OnInit {
       this.id = this.route.snapshot.params['id'];
       this.educacionService.obtenerEstudioPorId(this.id).subscribe(data => {
         this.educacion=data;
+        this.educacion.fechaInicio=new Date(this.educacion.fechaInicio);
+        this.educacion.fechaFin=new Date(this.educacion.fechaFin);
       })
     }
 
