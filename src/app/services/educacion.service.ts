@@ -14,7 +14,6 @@ export class EducacionService {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + sessionStorage.getItem('token')
   })
-  
 
   constructor(private httpClient : HttpClient) { }
 

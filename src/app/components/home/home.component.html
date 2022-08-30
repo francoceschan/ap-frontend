@@ -1,12 +1,13 @@
-  <div class="card mb-3 mt-3">
-    <img src="/assets/portada.jpg" class="card-img-top" alt="portada" />
-    <div class="card-body">
-      <h5 class="card-title">Franco Ceschan</h5>
-      <p class="card-text">Developer Full Stak - Angular - Java</p>    
-    </div>
-  </div>
 
+<app-datos-persona *ngIf="persona"
+nombre={{persona.nombre}}
+titulo={{persona.titulo}}
+>
+
+</app-datos-persona>
   <div>
+    <p-confirmDialog header="Confirmacion" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    
     <h1 class="flex justify-content-between fs-3">
 
       Educación       
@@ -21,12 +22,13 @@
     </h1>
 
     <app-educacion 
-    *ngFor="let estudio of estudios$ | async; index as i; first as isFirst"
+    *ngFor="let estudio of estudios; index as i; first as isFirst"
     id={{estudio.id}} 
     institucion={{estudio.institucion}}
     titulo={{estudio.titulo}}
     fechaInicio={{estudio.fechaInicio}}
     fechaFin={{estudio.fechaFin}}
+    (actualizarEstudios)="actualizarEstudios()"
     >
     </app-educacion>
 
@@ -47,15 +49,40 @@
     </h1>
     
     <app-experiencia-laboral
-    *ngFor="let experiencia of experiencias$ | async ; index as i; first as isFirst"
+    *ngFor="let experiencia of experiencias ; index as i; first as isFirst"
     id={{experiencia.id}} 
     institucion={{experiencia.institucion}}
     titulo={{experiencia.titulo}}
     fechaInicio={{experiencia.fechaInicio}}
     fechaFin={{experiencia.fechaFin}}
+    (actualizarExperiencias)="actualizarExperiencias()"
     ></app-experiencia-laboral>
 
   </div>
 
+  <div class="mt-3 mb-3">
+    <h1 class="flex justify-content-between fs-3">
+      Proyectos
+
+      <button 
+      *ngIf="isAuthenticated" 
+      class="agregar flex align-items-center justify-content-center p-button-rounded p-button-secondary p-button-outlined mr-2" 
+      pButton pRipple 
+      type="button" 
+      icon="pi pi-plus" 
+      (click)="registrarProyecto()"></button>
+
+    </h1>
+    
+<app-proyecto
+*ngFor="let proyecto of proyectos ; index as i; first as isFirst"
+id={{proyecto.id}} 
+nombre={{proyecto.nombre}}
+descripcion={{proyecto.descripcion}}
+link={{proyecto.link}}
+(actualizarProyectos)="actualizarProyectos()"
+></app-proyecto>
+
+  </div>
   
  

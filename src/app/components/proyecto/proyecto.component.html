@@ -1,15 +1,15 @@
-
-  <p-card header={{institucion}} class="m-2">
-    <p>{{titulo}}</p> 
-    <p>{{fechaInicio | date: "dd/MM/yyyy"}} - {{fechaFin | date: "dd/MM/yyyy"}}</p>  
-
+<p-card header={{nombre}} class="m-2">
+    <p>{{descripcion}}</p>  
     
-    <div class="flex justify-content-end flex-wrap mt-3">    
+    <button class="button-proyecto" (click)="navigateWeb()" target="_blank" pButton pRipple type="button" label="Ver Proyecto" class="p-button-raised p-button-secondary"></button>
+    
+  
+    <div class="flex justify-content-end flex-wrap mt-3">
 
       <button 
       class="flex align-items-center justify-content-center p-button-rounded p-button-outlined mr-2" 
       *ngIf="isAuthenticated"
-      (click)="modificarEstudio(id)" 
+      (click)="modificarProyecto(id)" 
       pButton 
       pRipple 
       type="button" 
@@ -18,12 +18,13 @@
     
       <button 
       class="flex align-items-center justify-content-center p-button-rounded p-button-danger p-button-outlined mr-2" *ngIf="isAuthenticated"
-      (click)="eliminarEstudio(id)" 
+      (click)="eliminarProyecto(id)" 
       pButton 
       pRipple 
       type="button" 
       icon="pi pi-times" >
       </button>
 
+   
     </div>
   </p-card>

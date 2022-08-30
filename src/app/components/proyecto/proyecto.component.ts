@@ -1,30 +1,30 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { EducacionService } from '../../services/educacion.service';
-import { LoginState } from '../login/state/login.state';
 import { ConfirmationService } from 'primeng/api';
+import { Observable } from 'rxjs';
+import { ProyectoService } from 'src/app/services/proyecto.service';
+import { LoginState } from '../login/state/login.state';
 
 @Component({
-  selector: 'app-educacion',
-  templateUrl: './educacion.component.html',
-  styleUrls: ['./educacion.component.css']
+  selector: 'app-proyecto',
+  templateUrl: './proyecto.component.html',
+  styleUrls: ['./proyecto.component.css']
 })
-export class EducacionComponent implements OnInit {
+export class ProyectoComponent implements OnInit {
 
   @Select(LoginState.getIsAuthenticated) isAuthenticated$ : Observable<boolean>;
 
   @Input() id:string;
-  @Input() institucion:string;
-  @Input() titulo:string;
-  @Input() fechaInicio:string;
-  @Input() fechaFin:string;
-  @Output() actualizarEstudios = new EventEmitter();
+  @Input() nombre:string;
+  @Input() descripcion:string;
+  @Input() link:string;
+
+  @Output() actualizarProyectos = new EventEmitter();
   isAuthenticated : boolean;
 
   constructor(
-    private educacionService:EducacionService,
+    private proyectoService:ProyectoService,
     private router : Router,
     private confirmationService: ConfirmationService,
 
@@ -37,17 +37,17 @@ export class EducacionComponent implements OnInit {
 
   }
 
-  eliminarEstudio(id:string){
+  eliminarProyecto(id:string){
 
     if(this.isAuthenticated){
  
 
       this.confirmationService.confirm({
-        message: '¿Seguro desea borrar este estudio?',
+        message: '¿Seguro desea borrar este proyecto?',
         acceptLabel: "Si",
         accept: () => {
-          this.educacionService.eliminarEstudio(id).subscribe(() => { 
-            this.actualizarEstudios.emit();
+          this.proyectoService.eliminarProyecto(id).subscribe(() => { 
+            this.actualizarProyectos.emit();
           }, error => console.log(error));  
           
         }
@@ -57,8 +57,11 @@ export class EducacionComponent implements OnInit {
       
   }
 
-  modificarEstudio(id:string){
-    this.router.navigate([`/registrar-educacion/${id}`])
+  modificarProyecto(id:string){
+    this.router.navigate([`/registrar-proyecto/${id}`])
   }
-  
+
+  navigateWeb(){
+    window.open(this.link,"_blank")
+  }
 }

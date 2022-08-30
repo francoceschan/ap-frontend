@@ -1,0 +1,31 @@
+<p-card header="Modificar datos personales" class="ml-4">
+    <form (ngSubmit)="onSubmit()">
+
+    <span class="p-float-label m-4">
+        <input 
+        id="nombre" 
+        [(ngModel)]="persona.nombre"
+        name="nombre"
+        type="text" 
+        pInputText> 
+
+        <label for="nombre">Nombre</label>
+    </span>
+
+    <span class="p-float-label m-4">
+                <input 
+        id="titulo" 
+        [(ngModel)]="persona.titulo"
+        name="titulo"
+        type="text" 
+        pInputText> 
+        <label for="titulo">Título</label>
+    </span>
+
+    <button pButton type="button" label="Guardar" class="ml-4" (click)="onSubmit()"></button>
+    <button pButton type="button" label="Volver" class="ml-4 p-button-secondary" (click)="volver()"></button>
+</form>
+  </p-card>
+
+  
+

@@ -52,12 +52,11 @@ export class RegistrarEducacionComponent implements OnInit {
 
     }
    
-  //  this.store.dispatch(new AgregarEducacion(true))
-  this.router.navigate(['/'])
+  this.router.navigate(['/home'])
   }
 
   volver(){
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
 
 }

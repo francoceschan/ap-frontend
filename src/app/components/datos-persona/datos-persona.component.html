@@ -1,0 +1,23 @@
+<div class="card mb-3 mt-3">
+    <img src="/assets/portada.jpg" class="card-img-top" alt="portada" />
+    <div class="card-body flex align-items-center">
+      <p-avatar image="/assets/user.png" styleClass="mr-2" shape="circle"></p-avatar>
+      <span class="ml-4">
+        <h5 class="card-title fs-3">{{nombre}}</h5>
+        <p class="card-text fs-4">{{titulo}}</p>
+
+      </span>
+    </div>
+    <div *ngIf="isAuthenticated"  class="boton flex justify-content-end flex-wrap">
+
+        <button 
+        class="flex align-items-center justify-content-center p-button-rounded p-button-outlined mr-2" 
+        (click)="modificarPersona()"
+        pButton 
+        pRipple 
+        type="button" 
+        icon="pi pi-pencil">
+        </button>
+       
+    </div>
+</div>

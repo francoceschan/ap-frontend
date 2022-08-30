@@ -1,0 +1,38 @@
+<p-card header="Registrar proyecto" class="ml-4">
+    <form (ngSubmit)="onSubmit()">
+
+    <span class="p-float-label m-4">
+        <input 
+        id="nombre" 
+        [(ngModel)]="proyecto.nombre"
+        name="nombre"
+        type="text" 
+        pInputText> 
+
+        <label for="nombre">Nombre</label>
+    </span>
+
+    <span class="p-float-label m-4">
+                <input 
+        id="descripcion" 
+        [(ngModel)]="proyecto.descripcion"
+        name="descripcion"
+        type="text" 
+        pInputText> 
+        <label for="descripcion">Descripción</label>
+    </span>
+
+    <span class="p-float-label m-4">
+        <input 
+        id="link"
+        [(ngModel)]="proyecto.link"
+        name="link"
+        type="text"
+        pInputText
+        >
+        <label for="link">Link</label>
+    </span>
+    <button pButton type="button" label="Guardar" class="ml-4" (click)="onSubmit()"></button>
+    <button pButton type="button" label="Volver" class="ml-4 p-button-secondary" (click)="volver()"></button>
+</form>
+  </p-card>

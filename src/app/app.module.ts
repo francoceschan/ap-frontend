@@ -16,6 +16,11 @@ import {CardModule} from 'primeng/card';
 import {MenubarModule} from 'primeng/menubar';
 import {InputTextModule}  from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
+import {AvatarModule} from 'primeng/avatar';
+import {FileUploadModule} from 'primeng/fileupload';
+
 
 import {HttpClientModule} from "@angular/common/http"
 import { ExperienciaLaboralComponent } from './components/experiencia-laboral/experiencia-laboral.component';
@@ -28,6 +33,10 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { environment } from 'src/environments/environment';
 
 import { LoginState } from './components/login/state/login.state';
+import { ProyectoComponent } from './components/proyecto/proyecto.component';
+import { RegistrarModificarProyectoComponent } from './components/registrar-modificar-proyecto/registrar-modificar-proyecto.component';
+import { ModificarPersonaComponent } from './components/modificar-persona/modificar-persona.component';
+import { DatosPersonaComponent } from './components/datos-persona/datos-persona.component';
 
 
 @NgModule({
@@ -41,6 +50,10 @@ import { LoginState } from './components/login/state/login.state';
     ExperienciaLaboralComponent,
     RegistrarEducacionComponent,
     RegistrarModificarExperienciaComponent,
+    ProyectoComponent,
+    RegistrarModificarProyectoComponent,
+    ModificarPersonaComponent,
+    DatosPersonaComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +62,9 @@ import { LoginState } from './components/login/state/login.state';
     ButtonModule,
     CardModule,
     CalendarModule,
+    ConfirmDialogModule,
+    FileUploadModule,
+    AvatarModule,
     MenubarModule,
     HttpClientModule,
     FormsModule,
@@ -65,7 +81,7 @@ import { LoginState } from './components/login/state/login.state';
     ),
  
   ],
-  providers: [],
+  providers: [ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

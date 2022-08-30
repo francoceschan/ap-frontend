@@ -1,18 +1,23 @@
 .card-img-top{
-    height: 200px;
+    height: 15rem;
     
 }
 
-button{
+.p-button-rounded{
     max-width: 2rem;
     max-height: 2rem;
+    
 }
 
-div{
+.card{
     width: 60vw;
 }
 
 ::ng-deep .p-avatar{
     min-width: 8rem;
     min-height: 8rem;
+}
+
+.boton{
+    margin: 1rem;
 }

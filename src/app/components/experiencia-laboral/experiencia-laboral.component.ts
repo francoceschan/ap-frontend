@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from 'src/app/services/auth.service';
 import { ExperienciaService } from 'src/app/services/experiencia.service';
 import { LoginState } from '../login/state/login.state';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-experiencia-laboral',
@@ -21,12 +21,15 @@ export class ExperienciaLaboralComponent implements OnInit {
   @Input() fechaInicio:string;
   @Input() fechaFin:string;
   
+  @Output() actualizarExperiencias = new EventEmitter();
+  
   isAuthenticated : boolean = false;
   
 
   constructor(
     private experienciaService: ExperienciaService,
     private router : Router,
+    private confirmationService: ConfirmationService,
   ) { }
 
   ngOnInit(): void {
@@ -34,29 +37,20 @@ export class ExperienciaLaboralComponent implements OnInit {
       this.isAuthenticated=isAuthenticatedState
     })
 
-    let fecha:Date;
-    let mes: number;
-    let anio: string;
-
-    fecha=new Date(this.fechaInicio)
-    mes=fecha.getMonth()+1
-    anio=fecha.getFullYear().toString()
-
-    this.fechaInicio = mes.toString()+" / "+anio
-
-    fecha=new Date(this.fechaFin)
-    mes=fecha.getMonth()+1
-    anio=fecha.getFullYear().toString()
-    this.fechaFin = mes.toString()+" / "+anio
-
   }
 
   eliminarExperiencia(id:string){
-    this.experienciaService.eliminarExperiencia(id).subscribe(dato => {
-      console.log(dato);
-    }, error => console.log(error));
 
-    
+    this.confirmationService.confirm({
+      message: '¿Seguro desea borrar esta experiencia laboral?',
+      acceptLabel: "Si",
+      accept: () => {
+        this.experienciaService.eliminarExperiencia(id).subscribe(() => { 
+          this.actualizarExperiencias.emit();
+        }, error => console.log(error));  
+        
+      }
+  });
   }
 
   modificarExperiencia(id:string){
